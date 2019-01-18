@@ -39,5 +39,4 @@ public class TransactionException extends PersistenceException {
   public TransactionException(Throwable cause) {
     super(cause);
   }
-
 }

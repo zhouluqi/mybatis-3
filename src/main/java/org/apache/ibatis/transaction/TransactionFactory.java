@@ -27,6 +27,7 @@ import org.apache.ibatis.session.TransactionIsolationLevel;
  *
  * @author Clinton Begin
  */
+//
 public interface TransactionFactory {
 
   /**
