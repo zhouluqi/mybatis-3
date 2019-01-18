@@ -20,10 +20,10 @@ import org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory;
 /**
  * @author Clinton Begin
  */
+//继承非池化数据源工厂
 public class PooledDataSourceFactory extends UnpooledDataSourceFactory {
-
+  //实例化一个池型数据源
   public PooledDataSourceFactory() {
     this.dataSource = new PooledDataSource();
   }
-
 }
