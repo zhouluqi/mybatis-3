@@ -38,7 +38,7 @@ import java.util.concurrent.locks.ReadWriteLock;
  *
  * @author Clinton Begin
  */
-
+//缓存接口  涉及委托模式
 public interface Cache {
 
   /**
@@ -93,6 +93,7 @@ public interface Cache {
    * 
    * @return A ReadWriteLock 
    */
+  //此方法可以忽略
   ReadWriteLock getReadWriteLock();
 
 }

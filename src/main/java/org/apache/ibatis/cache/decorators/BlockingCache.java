@@ -34,10 +34,13 @@ import org.apache.ibatis.cache.CacheException;
  * @author Eduardo Macarron
  *
  */
+//阻塞的Cache实现类
 public class BlockingCache implements Cache {
-
+  //阻塞等地超时时间
   private long timeout;
+  //委托的cache对象
   private final Cache delegate;
+  //缓存键与ReentrantLock映射
   private final ConcurrentHashMap<Object, ReentrantLock> locks;
 
   public BlockingCache(Cache delegate) {
@@ -110,9 +113,10 @@ public class BlockingCache implements Cache {
       lock.lock();
     }
   }
-
+  //释放锁
   private void releaseLock(Object key) {
     ReentrantLock lock = locks.get(key);
+    //如果当前线程持有并进行释放
     if (lock.isHeldByCurrentThread()) {
       lock.unlock();
     }

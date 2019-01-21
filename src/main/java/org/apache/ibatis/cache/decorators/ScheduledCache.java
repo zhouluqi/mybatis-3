@@ -22,10 +22,13 @@ import org.apache.ibatis.cache.Cache;
 /**
  * @author Clinton Begin
  */
+//定时缓存 定时清理
 public class ScheduledCache implements Cache {
-
+  //被委托的 cache 对象
   private final Cache delegate;
+  //清空间隔，单位:毫秒
   protected long clearInterval;
+  //最后清空时间，单位:毫秒
   protected long lastClear;
 
   public ScheduledCache(Cache delegate) {
@@ -86,7 +89,7 @@ public class ScheduledCache implements Cache {
   public boolean equals(Object obj) {
     return delegate.equals(obj);
   }
-
+  //每次缓存操作时，都调用 #clearWhenStale() 方法，根据情况，是否清空全部缓存。
   private boolean clearWhenStale() {
     if (System.currentTimeMillis() - lastClear > clearInterval) {
       clear();

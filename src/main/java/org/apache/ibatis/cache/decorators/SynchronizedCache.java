@@ -22,8 +22,9 @@ import org.apache.ibatis.cache.Cache;
 /**
  * @author Clinton Begin
  */
+//
 public class SynchronizedCache implements Cache {
-
+  //委托的cache对象
   private final Cache delegate;
   
   public SynchronizedCache(Cache delegate) {
